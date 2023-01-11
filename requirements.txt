@@ -1,0 +1,7 @@
+django
+djangorestframework
+pyyaml
+requests
+python-dotenv
+django-cors-headers
+mysqlclient
