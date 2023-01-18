@@ -5,3 +5,4 @@ requests
 python-dotenv
 django-cors-headers
 mysqlclient
+django-oauth-toolkit

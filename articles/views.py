@@ -10,6 +10,15 @@ class ArticleListCreateAPIView(generics.ListCreateAPIView):
     # authentication_classes = [authentication.SessionAuthentication]
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        queryset = Article.objects.all().order_by('-created')
+        search = self.request.query_params.get('search')
+
+        if search is not None:
+            queryset = queryset.filter(name__icontains=search).order_by('-created') | queryset.filter(
+                serial__icontains=search).order_by('-created')
+        return queryset
+
     def perform_create(self, serializer):
 
         serializer.save()
